@@ -66,6 +66,18 @@ public class Cashier {
 
 
     }
+
+    public int getTotalCustomerWaitTime(){
+        return totalCustomerWaitTime;
+    }
+
+    public int getTotalItemsServed(){
+        return totalItemsServed;
+    }
+
+    public int getTotalCustomersServed(){
+        return customersServed;
+    }
    
     public String toString() {
 
