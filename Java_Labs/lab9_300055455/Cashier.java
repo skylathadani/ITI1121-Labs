@@ -45,18 +45,18 @@ public class Cashier {
 
       if(currentCustomer == null && getQueueSize() != 0){
         currentCustomer = queue.dequeue();
-        totalCustomerWaitTime = totalCustomerWaitTime + currentTime;
+        totalCustomerWaitTime = (currentTime - currentCustomer.getArrivalTime());
 
       }
 
-      if(currentCustomer != null && currentCustomer.getNumberOfItems() > 0){
+      if(currentCustomer != null){    
+        if(currentCustomer.getNumberOfItems() == 0){
+            currentCustomer.serve();
+            totalItemsServed = totalItemsServed + currentCustomer.getNumberOfServedItems();
+            customersServed++;
+            currentCustomer = null;
 
-        currentCustomer.serve();
-
-      }else if(currentCustomer != null && currentCustomer.getNumberOfItems() == 0){
-        totalItemsServed = totalItemsServed + currentCustomer.getNumberOfServedItems();
-        customersServed++;
-        currentCustomer = null;
+        }
 
       }
 
